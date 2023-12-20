@@ -55,11 +55,25 @@ def main():
     # Uncomment to set the WebDriver path
     # bot.driver_path = "<path to your WebDriver binary>"
 
+    data = pandas.read_excel(r'files\EmployeesFeedback.xlsx')
+
     # Opens the BotCity website.
-    bot.browse("https://www.botcity.dev")
+    bot.browse("https://docs.google.com/forms/d/e/1FAIpQLSf2EwKKGsW7jWBxCNNiJoVEn2vnv9-lcygkBsMuCtsGlKfiEA/viewform")
+    bot.wait(1000)
 
     # Implement here your logic...
-    ...
+    try:
+        for index, row in data.iterrows():
+            employee_name_field = bot.find_element("//div[contains(@data-params, 'Employee name')]//input[@type='text']", By.XPATH)
+            employee_name_field.send_keys(row['Employee Name'])
+
+            bot.wait(500)
+
+            years_of_service_field = bot.find_element("//div[contains(@data-params, 'Years of Service')]//input[@type='text']", By.XPATH)
+            years_of_service_field.send_keys(row['Years of Service'])
+
+    except Exception as ex:
+        print('[DEBUG] Exception:', ex)
 
     # Wait 3 seconds before closing
     bot.wait(3000)
