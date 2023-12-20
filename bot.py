@@ -72,6 +72,16 @@ def main():
             years_of_service_field = bot.find_element("//div[contains(@data-params, 'Years of Service')]//input[@type='text']", By.XPATH)
             years_of_service_field.send_keys(row['Years of Service'])
 
+            bot.wait(500)
+
+            department_field = bot.find_element("//div[contains(@data-params, 'Department')]//div[contains(@role, 'listbox')]", By.XPATH)
+            department_field.click()
+            bot.wait(1000)
+            department_field_option = bot.find_element(f"//div[@role='option' and @data-value='{row['Department']}']", By.XPATH)
+            department_field_option.click()
+            bot.wait(500)
+
+
     except Exception as ex:
         print('[DEBUG] Exception:', ex)
 
