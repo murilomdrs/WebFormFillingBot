@@ -81,17 +81,17 @@ def main():
             department_field_option.click()
             bot.wait(500)
 
+            employee_satisfaction_field = bot.find_element(f"//div[contains(@data-params, 'Employee satisfaction')]//span[text()='{row['Satisfaction Rating']}']", By.XPATH)
+            employee_satisfaction_field.click()
+            bot.wait(500)
+
 
     except Exception as ex:
         print('[DEBUG] Exception:', ex)
 
-    # Wait 3 seconds before closing
-    bot.wait(3000)
-
-    # Finish and clean up the Web Browser
-    # You MUST invoke the stop_browser to avoid
-    # leaving instances of the webdriver open
-    bot.stop_browser()
+    finally:
+        bot.wait(3000)
+        bot.stop_browser()
 
     # Uncomment to mark this task as finished on BotMaestro
     # maestro.finish_task(
