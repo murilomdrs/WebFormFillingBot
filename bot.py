@@ -85,6 +85,13 @@ def main():
             employee_satisfaction_field.click()
             bot.wait(500)
 
+            submit_btn = bot.find_element("//div[@role='button']//span[text()='Enviar']", By.XPATH)
+            submit_btn.click()
+            bot.wait(300)
+
+            submit_another_response_btn = bot.find_element("//a[text()='Enviar outra resposta']", By.XPATH)
+            submit_another_response_btn.click()
+            bot.wait(300)
 
     except Exception as ex:
         print('[DEBUG] Exception:', ex)
