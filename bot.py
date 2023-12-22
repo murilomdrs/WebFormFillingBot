@@ -55,7 +55,7 @@ def main():
     # Uncomment to set the WebDriver path
     # bot.driver_path = "<path to your WebDriver binary>"
 
-    data = pandas.read_excel(r'files\EmployeesFeedback.xlsx')
+    data = pandas.read_excel(r'resources\EmployeesFeedback.xlsx')
 
     # Opens the BotCity website.
     bot.browse("https://docs.google.com/forms/d/e/1FAIpQLSf2EwKKGsW7jWBxCNNiJoVEn2vnv9-lcygkBsMuCtsGlKfiEA/viewform")
